@@ -15,11 +15,9 @@ public class EditNoticeService {
 	private NoticeDao noticeDao;
 
 	@Transactional
-	public void editNotice(int noticeNo) {
+	public void editNotice(int noticeNo, String noticeTitle, String noticeWriter, String noticeCont) {
 		
 		noticeDao = sqlSessionTemplate.getMapper(NoticeDao.class);
-
-		noticeDao.select(noticeNo);
 		noticeDao.edit(noticeNo);
 		
 	}
@@ -27,7 +25,6 @@ public class EditNoticeService {
 	public Notice editForm(int noticeNo) {
 		
 		noticeDao = sqlSessionTemplate.getMapper(NoticeDao.class);
-
 		return noticeDao.select(noticeNo);		
 	}
 	

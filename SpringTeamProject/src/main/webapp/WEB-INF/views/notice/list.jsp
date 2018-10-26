@@ -14,9 +14,13 @@
 	margin-bottom: 10px;
 }
 
-td {
+td, th {
 	width: 200px;
+	height: 30px;
 	text-align: center;
+}
+a{
+	text-decoration: none;
 }
 </style>
 </head>

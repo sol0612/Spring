@@ -9,10 +9,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/default.css">
 <style>
-img {
-	width: 300px;
-}
-
 td {
 	width: 200px;
 	text-align: center;
@@ -21,6 +17,10 @@ td {
 #title {
 	margin-left: 20px;
 	margin-bottom: 10px;
+}
+
+img {
+	width: 300px;
 }
 </style>
 </head>
@@ -47,16 +47,20 @@ td {
 							value="${i.noticeDate}" /></td>
 				</tr>
 				<tr>
-					<td colspan="4"><br> <img
-						src="${pageContext.request.contextPath}/uploadfile/${i.noticePhoto}">
-						<br> ${i.noticeCont}</td>
+					<td colspan="4">
+						<c:set var="img" value="${i.noticePhoto}" /> 
+						<c:if test="${img != null}">
+							<br><img src="${pageContext.request.contextPath}/uploadfile/${i.noticePhoto}"><br>
+						</c:if> 
+						${i.noticeCont}</td>
 				</tr>
 				<tr>
-				<td colspan="4" style="text-align:right"><a href="edit?noticeNo=${i.noticeNo}">수정하기</a> 
-				<a href="delete?noticeNo=${i.noticeNo}">삭제하기</a></td>
+					<td colspan="4" style="text-align: right"><a
+						href="edit?noticeNo=${i.noticeNo}">수정하기</a> <a
+						href="delete?noticeNo=${i.noticeNo}">삭제하기</a></td>
 				</tr>
 				<tr>
-				<td colspan="4" style="text-align:rigth"><a href="list">목록보기</a></td>
+					<td colspan="4" style="text-align: rigth"><a href="list">목록보기</a></td>
 				</tr>
 			</table>
 		</form>

@@ -14,8 +14,8 @@
 
 	<h1>수정 확인</h1>
 
-	<form method="post">
-		<input type="hidden" name="noticeNo" value="${mId}" />
+	<form method="post" enctype="multipart/form-data">
+		<input type="hidden" name="noticeNo" value="${noticeNo}" />
 		게시물을 수정하시겠습니까? <br /> 
 		<input type="submit" value="메시지 수정하기" />
 	</form>

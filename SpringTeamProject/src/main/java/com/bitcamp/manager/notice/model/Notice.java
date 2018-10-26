@@ -23,11 +23,11 @@ public class Notice {
 	}
 
 	public String getNoticeCont() {
-		return noticeCont;
+		return noticeCont.replace("\r\n", "<br>");
 	}
 
 	public void setNoticeCont(String noticeCont) {
-		this.noticeCont = noticeCont;
+		this.noticeCont = noticeCont.replace("\r\n", "<br>");
 	}
 
 	public String getNoticePhoto() {
