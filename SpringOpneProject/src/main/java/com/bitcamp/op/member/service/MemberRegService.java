@@ -44,9 +44,6 @@ public class MemberRegService {
 
 			// DB 에 저장할 이름 SET
 			memberInfo.setUserPhoto(imgName);
-			
-			System.out.println(dir);
-
 		}
 
 		try {
