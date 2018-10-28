@@ -2,6 +2,7 @@ package com.bitcamp.manager.notice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,13 +30,9 @@ public class NoticeEditController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String editNotice(
-			@RequestParam("noticeNo") int noticeNo,
-			@RequestParam("noticeTitle") String noticeTitle,
-			@RequestParam("noticeWriter") String noticeWriter,
-			@RequestParam("noticeCont") String noticeCont) {
+	public String editNotice(@ModelAttribute Notice notice, @RequestParam("noticeNo") int noticeNo) {
 
-		service.editNotice(noticeNo, noticeTitle, noticeWriter, noticeCont);
+		service.editNotice(notice, noticeNo);
 		
 		return "redirect:/notice/view";
 	}

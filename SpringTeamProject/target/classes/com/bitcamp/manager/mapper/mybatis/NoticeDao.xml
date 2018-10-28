@@ -55,7 +55,7 @@
 		NoticeWriter = #{noticeWriter},
 		NoticeCont = #{noticeCont},
 		NoticePhoto	= #{noticePhoto},
-		NoticeDate = #{noticeDate}
+		NoticeDate = CURRENT_TIMESTAMP
 		where NoticeNo = #{noticeNo}
 	</update>
 

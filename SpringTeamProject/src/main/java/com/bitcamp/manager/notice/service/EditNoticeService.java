@@ -3,6 +3,7 @@ package com.bitcamp.manager.notice.service;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.bitcamp.manager.notice.dao.NoticeDao;
 import com.bitcamp.manager.notice.model.Notice;
@@ -15,7 +16,7 @@ public class EditNoticeService {
 	private NoticeDao noticeDao;
 
 	@Transactional
-	public void editNotice(int noticeNo, String noticeTitle, String noticeWriter, String noticeCont) {
+	public void editNotice(@ModelAttribute Notice notice, int noticeNo) {
 		
 		noticeDao = sqlSessionTemplate.getMapper(NoticeDao.class);
 		noticeDao.edit(noticeNo);
