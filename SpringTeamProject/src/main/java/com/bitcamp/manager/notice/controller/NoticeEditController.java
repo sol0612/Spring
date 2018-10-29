@@ -31,7 +31,7 @@ public class NoticeEditController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String editNotice(@ModelAttribute Notice notice) {
+	public String editNotice(Notice notice) {
 
 		System.out.println(notice.toString());
 		service.editNotice(notice);

@@ -35,7 +35,7 @@ public class GetNoticeListService {
 		if (noticeTotalCount > 0) {
 
 			firstRow = (pageNumber - 1) * NOTICE_COUNT_PER_PAGE;
-			endRow = firstRow + NOTICE_COUNT_PER_PAGE;
+			endRow = NOTICE_COUNT_PER_PAGE;
 			noticeList = noticeDao.selectList(firstRow, endRow);
 
 		} else {

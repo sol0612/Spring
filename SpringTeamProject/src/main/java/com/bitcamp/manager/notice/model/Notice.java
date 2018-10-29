@@ -13,6 +13,7 @@ public class Notice {
 	private String noticePhoto; // DB에 저장할 파일 이름
 	private MultipartFile noticeFile; // form에 저장한 이름으로 받을 객체이름
 	private Timestamp noticeDate; // 작성시간
+	private int noticeReportCnt;
 
 	public int getNoticeNo() {
 		return noticeNo;
@@ -70,11 +71,19 @@ public class Notice {
 		this.noticeTitle = noticeTitle;
 	}
 
+	public int getNoticeReportCnt() {
+		return noticeReportCnt;
+	}
+
+	public void setNoticeReportCnt(int noticeReportCnt) {
+		this.noticeReportCnt = noticeReportCnt;
+	}
+
 	@Override
 	public String toString() {
-		return "Notice [noticeNo=" + noticeNo + ", noticeWriter=" + noticeWriter + ", noticeTitle=" + noticeTitle
+		return "Notice [noticeNo=" + noticeNo + ", noticeTitle=" + noticeTitle + ", noticeWriter=" + noticeWriter
 				+ ", noticeCont=" + noticeCont + ", noticePhoto=" + noticePhoto + ", noticeFile=" + noticeFile
-				+ ", noticeDate=" + noticeDate + "]";
+				+ ", noticeDate=" + noticeDate + ", noticeReportCnt=" + noticeReportCnt + "]";
 	}
 
 }

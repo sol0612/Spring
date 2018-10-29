@@ -47,24 +47,26 @@ img {
 							value="${i.noticeDate}" /></td>
 				</tr>
 				<tr>
-					<td colspan="4">
-						<c:set var="img" value="${i.noticePhoto}" /> 
+					<td colspan="4"><c:set var="img" value="${i.noticePhoto}" />
 						<c:if test="${img != null}">
-							<br><img src="${pageContext.request.contextPath}/uploadfile/${i.noticePhoto}"><br>
-						</c:if> 
-						${i.noticeCont}</td>
+							<br>
+							<img src="${pageContext.request.contextPath}/uploadfile/${i.noticePhoto}">
+							<br>
+						</c:if> ${i.noticeCont}</td>
 				</tr>
+					<c:if test="${!i.noticeWriter.isEmpty()}">
 				<tr>
-					<td colspan="4" style="text-align: right"><a
-						href="edit?noticeNo=${i.noticeNo}">수정하기</a> <a
-						href="delete?noticeNo=${i.noticeNo}">삭제하기</a></td>
+						<td colspan="4" style="text-align: right"><a
+							href="edit?noticeNo=${i.noticeNo}">수정하기</a> <a
+							href="delete?noticeNo=${i.noticeNo}">삭제하기</a> <a
+							href="report?noticeNo=${i.noticeNo}">신고하기</a></td>
 				</tr>
+					</c:if>
 				<tr>
 					<td colspan="4" style="text-align: rigth"><a href="list">목록보기</a></td>
 				</tr>
 			</table>
 		</form>
 	</div>
-
 </body>
 </html>

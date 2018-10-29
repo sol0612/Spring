@@ -49,16 +49,37 @@
 		NoticeNo = #{noticeNo}
 	</delete>
 
-	<update id="edit" parameterType="map">
+	<update id="edit">
 		update notice set
-		<trim prefix="SET" suffixOverrides=",">
-			<if test="noticeWriter != null">NoticeWriter = #{noticeWriter},</if>
-			<if test="noticeTitle != null">NoticeTitle = #{noticeTitle},</if>
-			<if test="noticeCont != null">NoticeCont = #{noticeCont},</if>
-			<if test="noticePhoto != null">NoticePhoto = #{noticePhoto},</if>
-			<if test="noticeDate != null">NoticeDate = now() </if>
-		</trim>
+		NoticeWriter = #{noticeWriter},
+		NoticeTitle = #{noticeTitle},
+		NoticeCont = #{noticeCont},
+		NoticePhoto = #{noticePhoto},
+		NoticeDate = now()
 		where NoticeNo = #{noticeNo}
+	</update>
+
+	<insert id="reportUp">
+		insert into report
+		(NoticeNo)
+		values
+		(#{noticeNo})
+	</insert>
+
+	<select id="reportCnt" resultType="int">
+		select count(NoticeNo)
+		from
+		report where NoticeNo = #{noticeNo}
+	</select>
+
+	<update id="report">
+		update notice set
+		NoticeTitle = '신고접수된 글입니다.',
+		NoticeCont = '신고접수된글입니다.',
+		NoticePhoto = NULL,
+		NoticeWriter = ''
+		where
+		NoticeNo = #{noticeNo}
 	</update>
 
 </mapper>

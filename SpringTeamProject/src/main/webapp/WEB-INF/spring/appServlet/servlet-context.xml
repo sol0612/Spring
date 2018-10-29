@@ -88,5 +88,7 @@
 		class="com.bitcamp.manager.notice.service.DeleteNoticeService" />
 	<beans:bean id="editNoticeService"
 		class="com.bitcamp.manager.notice.service.EditNoticeService" />
+	<beans:bean id="reportNoticeService"
+		class="com.bitcamp.manager.notice.service.ReportNoticeService" />
 
 </beans:beans>
