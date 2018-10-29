@@ -49,13 +49,15 @@
 		NoticeNo = #{noticeNo}
 	</delete>
 
-	<update id="edit">
+	<update id="edit" parameterType="map">
 		update notice set
-		NoticeTitle = #{noticeTitle},
-		NoticeWriter = #{noticeWriter},
-		NoticeCont = #{noticeCont},
-		NoticePhoto	= #{noticePhoto},
-		NoticeDate = CURRENT_TIMESTAMP
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="noticeWriter != null">NoticeWriter = #{noticeWriter},</if>
+			<if test="noticeTitle != null">NoticeTitle = #{noticeTitle},</if>
+			<if test="noticeCont != null">NoticeCont = #{noticeCont},</if>
+			<if test="noticePhoto != null">NoticePhoto = #{noticePhoto},</if>
+			<if test="noticeDate != null">NoticeDate = now() </if>
+		</trim>
 		where NoticeNo = #{noticeNo}
 	</update>
 

@@ -16,10 +16,11 @@ public class EditNoticeService {
 	private NoticeDao noticeDao;
 
 	@Transactional
-	public void editNotice(@ModelAttribute Notice notice, int noticeNo) {
+	public void editNotice(@ModelAttribute Notice notice) {
 		
 		noticeDao = sqlSessionTemplate.getMapper(NoticeDao.class);
-		noticeDao.edit(noticeNo);
+		/*noticeDao.select(notice.getNoticeNo());*/	
+		noticeDao.edit(notice.getNoticeNo());
 		
 	}
 	
