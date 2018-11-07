@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.springsns.manager.dao.ListDao">
+
+	<resultMap id="member"
+		type="com.team.springsns.manager.model.Member">
+		<result property="userNo" column="userno" javaType="int" />
+		<result property="userId" column="userid"
+			javaType="java.lang.String" />
+		<result property="userName" column="username"
+			javaType="java.lang.String" />
+		<result property="userPassword" column="userpassword"
+			javaType="java.lang.String" />
+		<result property="userProfilePhoto" column="userprofilephoto"
+			javaType="java.lang.String" />
+		<result property="userIntro" column="userintro"
+			javaType="java.lang.String" />
+	</resultMap>
+
+	<select id="select_member_list" parameterType="map"
+		resultMap="member">
+		select * from member
+	</select>
+
+	<select id="select_member" parameterType="map"
+		resultMap="member">
+		select * from
+		member where userno = #{userNo}
+	</select>
+
+	<update id="edit_member">
+		update member set
+		userid = #{userId},
+		username = #{userName},
+		userpassword = #{userPassword},
+		userprofilephoto = #{userProfilePhoto},
+		userintro = #{userIntro}
+		where userno = #{userNo}
+	</update>
+
+	<delete id="delete_member">
+		delete from member where
+		userno = #{userNo}
+	</delete>
+
+	<resultMap id="board"
+		type="com.team.springsns.manager.model.Board">
+		<result property="boardNo" column="boardno" javaType="int" />
+		<result property="userNo" column="userno" javaType="int" />
+		<result property="boardContent" column="boardcontent"
+			javaType="java.lang.String" />
+		<result property="boardPhoto" column="boardphoto"
+			javaType="java.lang.String" />
+		<result property="hashTag" column="hashtag"
+			javaType="java.lang.String" />
+		<result property="boardDate" column="boarddate"
+			javaType="java.sql.Timestamp" />
+	</resultMap>
+
+	<select id="select_board_list" parameterType="map"
+		resultMap="board">
+		select *
+		from board
+	</select>
+
+	<select id="select_board" parameterType="map" resultMap="board">
+		select *
+		from
+		board where boardno = #{boardNo}
+	</select>
+
+	<update id="edit_board">
+		update board set
+		userno = #{userNo},
+		boardcontent =
+		#{boardContent},
+		hashtag = #{hashTag},
+		boardphoto = #{boardPhoto},
+		boarddate = now()
+		where boardno = #{boardNo}
+	</update>
+
+	<delete id="delete_board">
+		delete from board where
+		boardno = #{boardNo}
+	</delete>
+
+
+	<resultMap id="comment"
+		type="com.team.springsns.manager.model.Comment">
+		<result property="commentNo" column="commentno" javaType="int" />
+		<result property="boardNo" column="boardno" javaType="int" />
+		<result property="userId" column="userid"
+			javaType="java.lang.String" />
+		<result property="commentCont" column="commentcont"
+			javaType="java.lang.String" />
+		<result property="commentDate" column="commentdate"
+			javaType="java.sql.Timestamp" />
+	</resultMap>
+
+	<select id="select_comment_list" parameterType="map"
+		resultMap="comment">
+		select * from comment
+	</select>
+
+	<select id="select_comment" parameterType="map"
+		resultMap="comment">
+		select * from
+		comment where commentno = #{commentNo}
+	</select>
+
+	<update id="edit_comment">
+		update comment set
+		boardno = #{boardNo},
+		userid =
+		#{userId},
+		commentcont = #{commentCont},
+		commentdate = now()
+		where
+		commentno = #{commentNo}
+	</update>
+
+	<delete id="delete_comment">
+		delete from comment where
+		commentno = #{commentNo}
+	</delete>
+
+</mapper>

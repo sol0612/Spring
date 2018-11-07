@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 인터페이스가 있는 패키지+클래스명 -->
+<mapper namespace="com.team.springsns.manager.dao.NoticeDao">
+
+	<resultMap id="notice"
+		type="com.team.springsns.manager.model.Notice">
+		<result property="noticeNo" column="noticeno" javaType="int" />
+		<result property="noticeTitle" column="noticetitle"
+			javaType="java.lang.String" />
+		<result property="noticeWriter" column="noticewriter"
+			javaType="java.lang.String" />
+		<result property="noticeCont" column="noticecont"
+			javaType="java.lang.String" />
+		<result property="noticePhoto" column="noticephoto"
+			javaType="java.lang.String" />
+		<result property="noticeDate" column="noticedate"
+			javaType="java.sql.Timestamp" />
+		<result property="noticeHit" column="noticehit" javaType="int" />
+	</resultMap>
+
+	<insert id="insert" parameterType="String">
+		insert into notice
+		(noticetitle, noticewriter,
+		noticecont, noticephoto)
+		values
+		(#{noticeTitle},
+		#{noticeWriter}, #{noticeCont},
+		#{noticePhoto})
+	</insert>
+
+	<select id="select" parameterType="map" resultMap="notice">
+		select * from
+		notice where noticeno = #{noticeNo}
+	</select>
+
+	<select id="selectCount" resultType="int">
+		select count(*) from notice
+	</select>
+
+	<select id="selectList" parameterType="map" resultMap="notice">
+		select *
+		from notice order by noticeno desc limit
+		#{firstRow}, #{endRow}
+	</select>
+
+	<delete id="delete">
+		delete from notice where
+		noticeno = #{noticeNo}
+	</delete>
+
+	<update id="edit">
+		update notice set
+		noticewriter = #{noticeWriter},
+		noticetitle = #{noticeTitle},
+		noticecont = #{noticeCont},
+		noticephoto =
+		#{noticePhoto},
+		noticedate = now()
+		where noticeno = #{noticeNo}
+	</update>
+
+	<update id="updateHits">
+		update notice
+		set noticehit = noticehit + 1
+		where noticeno = #{noticeNo}
+	</update>
+
+</mapper>
